@@ -1,6 +1,11 @@
 # Pipex
 The goal of this repo is to reproduce the behavior of the pipes in a bash shell using C.
 
+ipex focuses on three main concepts: pipelines, child processes and execution of commands.
+
+https://reactive.so/42-a-comprehensive-guide-to-pipex
+
+
 Pipe() function :
 
 In C programming, the `pipe()` function is used to create a communication channel (a pipe) between two related processes. 
