@@ -1,6 +1,3 @@
-# Pipex
-The goal of this repo is to reproduce the behavior of the pipes in a bash shell using C.
-
 Pipe() function :
 
 In C programming, the `pipe()` function is used to create a communication channel (a pipe) between two related processes. 
