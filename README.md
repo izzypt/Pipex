@@ -6,6 +6,15 @@ Pipex focuses on three main concepts: pipelines, child processes and execution o
 https://reactive.so/42-a-comprehensive-guide-to-pipex
 
 
+## WhiteListed Functions:
+
+![image](https://github.com/izzypt/Pipex/assets/73948790/cb6cf7c8-4368-4fc1-a6b1-e9a7867ab4b2)
+![image](https://github.com/izzypt/Pipex/assets/73948790/1f9fad82-c68f-4c98-a646-7fa7c23a5d14)
+![image](https://github.com/izzypt/Pipex/assets/73948790/e9486474-3b6b-48fc-af33-60948c08c72a)
+![image](https://github.com/izzypt/Pipex/assets/73948790/920e358f-64a0-42f1-a47d-01cf0115100a)
+
+
+
 Pipe() function :
 
 In C programming, the `pipe()` function is used to create a communication channel (a pipe) between two related processes. 
