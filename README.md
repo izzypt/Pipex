@@ -1,5 +1,7 @@
 # Pipex
-The goal of this repo is to reproduce the behavior of the pipes in a bash shell using C. Not as parte of the Pipex project, but to integrate it within the Minishell.
+The goal of this repo is to reproduce the behavior of the pipes in a bash shell using C. 
+
+Not as parte of the Pipex project, but to integrate it within the Minishell.
 
 Pipex focuses on three main concepts: pipelines, child processes and execution of commands.
 
@@ -12,6 +14,9 @@ https://reactive.so/42-a-comprehensive-guide-to-pipex
 ![image](https://github.com/izzypt/Pipex/assets/73948790/1f9fad82-c68f-4c98-a646-7fa7c23a5d14)
 ![image](https://github.com/izzypt/Pipex/assets/73948790/e9486474-3b6b-48fc-af33-60948c08c72a)
 ![image](https://github.com/izzypt/Pipex/assets/73948790/920e358f-64a0-42f1-a47d-01cf0115100a)
+![image](https://github.com/izzypt/Pipex/assets/73948790/066cf522-0732-41e5-8049-f9ef786a20df)
+![image](https://github.com/izzypt/Pipex/assets/73948790/fe6cd378-d193-414d-8225-f02c7bba4aad)
+![image](https://github.com/izzypt/Pipex/assets/73948790/a453ec07-732a-4243-b21e-0c2861a0c04a)
 
 
 
