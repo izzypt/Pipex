@@ -1,5 +1,5 @@
 # Pipex
-The goal of this repo is to reproduce the behavior of the pipes in a bash shell using C.
+The goal of this repo is to reproduce the behavior of the pipes in a bash shell using C. Not as parte of the Pipex project, but to integrate it within the Minishell.
 
 Pipex focuses on three main concepts: pipelines, child processes and execution of commands.
 
