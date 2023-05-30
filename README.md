@@ -91,48 +91,6 @@ In this example, the parent process writes the string "Hello, child!" to the pip
 
 Note that error handling for `pipe()` and other system calls is omitted in this example for simplicity. In a real-world program, you should check the return values of system calls for possible errors.
 
-
-============================================================================================
-
-exclp function():
-
-In C programming, the `execlp()` function is used to replace the current process with a new process specified by the given command. It allows you to execute a program by providing its name along with a list of arguments, similar to using the command-line interface.
-
-The `execlp()` function is part of the `exec` family of functions in C, which are used for process execution. 
-The `execlp()` function is specifically used when you want to specify the program to be executed by its name, and you want to search for the program in the directories listed in the `PATH` environment variable.
-
-Here's the prototype of the `execlp()` function:
-
-```c
-#include <unistd.h>
-
-int execlp(const char *file, const char *arg0, ... /* (char *) NULL */);
-```
-
-The `file` argument specifies the name of the program to be executed. The `arg0` and subsequent arguments represent the command-line arguments passed to the program. The list of arguments should be terminated with a `(char *) NULL`.
-
-When `execlp()` is called, the current process is replaced by the new process. If the execution is successful, the code after the `execlp()` function call is not executed.
-
-Here's an example usage of `execlp()` to execute the `ls` command:
-
-```c
-#include <unistd.h>
-
-int main() {
-    execlp("ls", "ls", "-l", NULL);
-    
-    // Code after execlp() is not executed if the execution is successful
-    
-    return 0;
-}
-```
-
-In this example, the `execlp()` function is used to execute the `ls` command with the `-l` option. The first argument `"ls"` specifies the program name, followed by the command-line arguments `"ls"` and `"-l"`. The `NULL` terminator indicates the end of the argument list.
-
-After the `execlp()` function call, the current process is replaced by the `ls` command, which lists the files and directories in the current directory in long format.
-
-It's important to note that if `execlp()` returns, it means there was an error in executing the specified program. In such cases, you can check the return value of `execlp()` for an error indication. The function returns -1 on error, and `errno` is set to indicate the specific error condition.
-
 ================================================================
 
 execve() executes the program referred to by pathname.  This
