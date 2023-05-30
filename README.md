@@ -29,7 +29,6 @@ The `access()` function accepts two arguments: the file path as a string and the
 - `X_OK`: Checks if the file or directory is executable.
 - `F_OK`: Checks if the file or directory exists.
 
-To summarize, `access()` returns 0 if the requested accessibility check succeeds, and -1 if an error occurs. The specific error can be determined by inspecting the `errno` variable.
 ![image](https://github.com/izzypt/Pipex/assets/73948790/066cf522-0732-41e5-8049-f9ef786a20df)
 ![image](https://github.com/izzypt/Pipex/assets/73948790/fe6cd378-d193-414d-8225-f02c7bba4aad)
 ![image](https://github.com/izzypt/Pipex/assets/73948790/a453ec07-732a-4243-b21e-0c2861a0c04a)
