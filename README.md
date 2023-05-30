@@ -14,6 +14,22 @@ https://reactive.so/42-a-comprehensive-guide-to-pipex
 ![image](https://github.com/izzypt/Pipex/assets/73948790/1f9fad82-c68f-4c98-a646-7fa7c23a5d14)
 ![image](https://github.com/izzypt/Pipex/assets/73948790/e9486474-3b6b-48fc-af33-60948c08c72a)
 ![image](https://github.com/izzypt/Pipex/assets/73948790/920e358f-64a0-42f1-a47d-01cf0115100a)
+![image](https://github.com/izzypt/Pipex/assets/73948790/d1b100e3-28a3-429a-9a4a-61de949fd8fe)
+
+The possible return values of the `access()` function are defined as preprocessor macros in the `<unistd.h>` header file. Here are the commonly used return values:
+
+- **0**: This value indicates that the file or directory is accessible in the specified mode. It means the permissions allow the requested operation.
+
+- **-1**: This value indicates that an error occurred while checking the accessibility of the file or directory. The specific error can be determined by checking the value of the `errno` variable. Common reasons for an error include the file or directory not existing, insufficient permissions to perform the check, or other system-specific issues.
+
+The `access()` function accepts two arguments: the file path as a string and the desired mode as an integer. The mode argument specifies the type of access you want to check, such as readability, writability, or executability. Modes are represented by predefined constants, which are also declared in `<unistd.h>`. Here are some common mode constants:
+
+- `R_OK`: Checks if the file or directory is readable.
+- `W_OK`: Checks if the file or directory is writable.
+- `X_OK`: Checks if the file or directory is executable.
+- `F_OK`: Checks if the file or directory exists.
+
+To summarize, `access()` returns 0 if the requested accessibility check succeeds, and -1 if an error occurs. The specific error can be determined by inspecting the `errno` variable.
 ![image](https://github.com/izzypt/Pipex/assets/73948790/066cf522-0732-41e5-8049-f9ef786a20df)
 ![image](https://github.com/izzypt/Pipex/assets/73948790/fe6cd378-d193-414d-8225-f02c7bba4aad)
 ![image](https://github.com/izzypt/Pipex/assets/73948790/a453ec07-732a-4243-b21e-0c2861a0c04a)
