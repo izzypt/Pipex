@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/09 19:58:55 by smagalha          #+#    #+#             */
-/*   Updated: 2023/05/31 15:47:00 by simao            ###   ########.fr       */
+/*   Created: 2023/05/31 15:36:52 by simao             #+#    #+#             */
+/*   Updated: 2023/05/31 15:38:06 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-char	*ft_strjoin(char const *prefix, char const *suffix)
+t_list	*ft_lstnew(char *cmd, char *path)
 {
-	size_t	len_prefix;
-	size_t	len_suffix;
-	char	*buffer;
+	t_list	*new;
 
-	len_prefix = ft_strlen(prefix);
-	len_suffix = ft_strlen(suffix);
-	buffer = (char *)malloc(len_prefix + len_suffix + 1);
-	if (!buffer)
+	new = (t_list *)ft_calloc(sizeof(t_list), 1);
+	if (!new)
 		return (NULL);
-	ft_memcpy(buffer, (const void *)prefix, len_prefix);
-	ft_memcpy(&buffer[len_prefix], (const void *)suffix, len_suffix);
-	buffer[len_prefix + len_suffix] = '\0';
-	return ((char *)buffer);
+	new->full_cmd = ft_split(cmd, ' ');
+	new->cmd = new->full_cmd[0];
+	if (pipe(new->fd) == -1)
+		perror("");
+	new->path = path;
+	return (new);
 }

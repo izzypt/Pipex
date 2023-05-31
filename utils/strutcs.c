@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   strutcs.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/09 13:49:01 by smagalha          #+#    #+#             */
-/*   Updated: 2023/05/31 16:00:03 by simao            ###   ########.fr       */
+/*   Created: 2023/05/31 12:25:38 by simao             #+#    #+#             */
+/*   Updated: 2023/05/31 15:22:20 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+t_list	*cmds_lst(void)
 {
-	size_t	i;
+	static t_list	list;
 
-	i = 0;
-	if (n == 0)
-		return (0);
-	while ((s1[i] || s2[i]) && i < n)
-	{
-		if (s1[i] != s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-		i++;
-	}
-	return (0);
+	return (&list);
+}
+
+t_data	*data(void)
+{
+	static t_data	dados;
+
+	dados.head = cmds_lst();
+
+	return (&dados);
 }
