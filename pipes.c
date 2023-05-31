@@ -6,13 +6,13 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:38:10 by simao             #+#    #+#             */
-/*   Updated: 2023/05/31 21:47:52 by simao            ###   ########.fr       */
+/*   Updated: 2023/05/31 22:43:54 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	run_command(void)
+void	run_command(t_list *node)
 {
 	int	fd[2];
 	int	pid1;
@@ -25,7 +25,7 @@ void	run_command(void)
 		dup2(infile, STDIN_FILENO);
 		//close(fd[0]);
 		//close(fd[1]);
-		execve(cmd_list()->path, cmd_list()->full_cmd, NULL);
+		execve(node->path, node->full_cmd, NULL);
 	}
 	close(infile);
 	waitpid(pid1, NULL, 0);
