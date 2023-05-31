@@ -6,41 +6,21 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 19:04:07 by simao             #+#    #+#             */
-/*   Updated: 2023/05/31 16:28:50 by simao            ###   ########.fr       */
+/*   Updated: 2023/05/31 20:54:31 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	open_files(int ac, char **av)
-{
-	int		fd[2];
-
-	(data())->fd_input = open(av[1], O_RDONLY);
-	if (data()->fd_input == -1)
-	{
-		perror(av[1]);
-		pipe(fd);
-		(data())->fd_input = fd[0];
-		close(fd[1]);
-	}
-	(data())->fd_output = open(av[ac - 1], O_WRONLY | O_TRUNC | O_CREAT, 0644);
-	if (data()->fd_output == -1)
-	{
-		perror("");
-		exit(0);
-	}
-}
-
 int	main(int argc, char **argv, char **env)
 {
-
-	data()->paths = get_path_list(env);
-	if (path_acessible(argv[2], data()->paths))
-		run_command();
+	get_path_list(env);
+	parse_commands(argv);
+	run_command();
 	free_paths(data()->paths);
 	return (0);
 }
+
 
 /*
 
