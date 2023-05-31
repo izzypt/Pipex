@@ -1,9 +1,38 @@
 # Pipex
-The goal of this repo is to reproduce the behavior of the pipes in a bash shell using C.
+The goal of this repo is to reproduce the behavior of the pipes in a bash shell using C. 
 
-ipex focuses on three main concepts: pipelines, child processes and execution of commands.
+Not as parte of the Pipex project, but to integrate it within the Minishell.
+
+Pipex focuses on three main concepts: pipelines, child processes and execution of commands.
 
 https://reactive.so/42-a-comprehensive-guide-to-pipex
+
+
+## WhiteListed Functions:
+
+![image](https://github.com/izzypt/Pipex/assets/73948790/cb6cf7c8-4368-4fc1-a6b1-e9a7867ab4b2)
+![image](https://github.com/izzypt/Pipex/assets/73948790/1f9fad82-c68f-4c98-a646-7fa7c23a5d14)
+![image](https://github.com/izzypt/Pipex/assets/73948790/e9486474-3b6b-48fc-af33-60948c08c72a)
+![image](https://github.com/izzypt/Pipex/assets/73948790/920e358f-64a0-42f1-a47d-01cf0115100a)
+![image](https://github.com/izzypt/Pipex/assets/73948790/d1b100e3-28a3-429a-9a4a-61de949fd8fe)
+
+The possible return values of the `access()` function are defined as preprocessor macros in the `<unistd.h>` header file. Here are the commonly used return values:
+
+- **0**: This value indicates that the file or directory is accessible in the specified mode. It means the permissions allow the requested operation.
+
+- **-1**: This value indicates that an error occurred while checking the accessibility of the file or directory. The specific error can be determined by checking the value of the `errno` variable. Common reasons for an error include the file or directory not existing, insufficient permissions to perform the check, or other system-specific issues.
+
+The `access()` function accepts two arguments: the file path as a string and the desired mode as an integer. The mode argument specifies the type of access you want to check, such as readability, writability, or executability. Modes are represented by predefined constants, which are also declared in `<unistd.h>`. Here are some common mode constants:
+
+- `R_OK`: Checks if the file or directory is readable.
+- `W_OK`: Checks if the file or directory is writable.
+- `X_OK`: Checks if the file or directory is executable.
+- `F_OK`: Checks if the file or directory exists.
+
+![image](https://github.com/izzypt/Pipex/assets/73948790/066cf522-0732-41e5-8049-f9ef786a20df)
+![image](https://github.com/izzypt/Pipex/assets/73948790/fe6cd378-d193-414d-8225-f02c7bba4aad)
+![image](https://github.com/izzypt/Pipex/assets/73948790/a453ec07-732a-4243-b21e-0c2861a0c04a)
+
 
 
 Pipe() function :
@@ -61,48 +90,6 @@ int main() {
 In this example, the parent process writes the string "Hello, child!" to the pipe, and the child process reads it and prints it. The `close()` calls are used to close the unused ends of the pipe in each process to avoid resource leaks.
 
 Note that error handling for `pipe()` and other system calls is omitted in this example for simplicity. In a real-world program, you should check the return values of system calls for possible errors.
-
-
-============================================================================================
-
-exclp function():
-
-In C programming, the `execlp()` function is used to replace the current process with a new process specified by the given command. It allows you to execute a program by providing its name along with a list of arguments, similar to using the command-line interface.
-
-The `execlp()` function is part of the `exec` family of functions in C, which are used for process execution. 
-The `execlp()` function is specifically used when you want to specify the program to be executed by its name, and you want to search for the program in the directories listed in the `PATH` environment variable.
-
-Here's the prototype of the `execlp()` function:
-
-```c
-#include <unistd.h>
-
-int execlp(const char *file, const char *arg0, ... /* (char *) NULL */);
-```
-
-The `file` argument specifies the name of the program to be executed. The `arg0` and subsequent arguments represent the command-line arguments passed to the program. The list of arguments should be terminated with a `(char *) NULL`.
-
-When `execlp()` is called, the current process is replaced by the new process. If the execution is successful, the code after the `execlp()` function call is not executed.
-
-Here's an example usage of `execlp()` to execute the `ls` command:
-
-```c
-#include <unistd.h>
-
-int main() {
-    execlp("ls", "ls", "-l", NULL);
-    
-    // Code after execlp() is not executed if the execution is successful
-    
-    return 0;
-}
-```
-
-In this example, the `execlp()` function is used to execute the `ls` command with the `-l` option. The first argument `"ls"` specifies the program name, followed by the command-line arguments `"ls"` and `"-l"`. The `NULL` terminator indicates the end of the argument list.
-
-After the `execlp()` function call, the current process is replaced by the `ls` command, which lists the files and directories in the current directory in long format.
-
-It's important to note that if `execlp()` returns, it means there was an error in executing the specified program. In such cases, you can check the return value of `execlp()` for an error indication. The function returns -1 on error, and `errno` is set to indicate the specific error condition.
 
 ================================================================
 
