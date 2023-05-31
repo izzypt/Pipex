@@ -12,6 +12,32 @@ https://reactive.so/42-a-comprehensive-guide-to-pipex
 
 ![image](https://github.com/izzypt/Pipex/assets/73948790/cb6cf7c8-4368-4fc1-a6b1-e9a7867ab4b2)
 ![image](https://github.com/izzypt/Pipex/assets/73948790/1f9fad82-c68f-4c98-a646-7fa7c23a5d14)
+
+These are three standard streams that are used for input and output operations in a program.
+
+- STDIN (Standard Input): 
+  - It is a standard stream that provides input to a program. In shell/bash, STDIN is typically associated with the keyboard input. 
+  - When you run a program in the shell, you can provide input to it through STDIN by typing on the keyboard. 
+  - In C programming, STDIN is <ins>***represented by the file descriptor 0***</ins>, and it can be used to read input from the user or from a file.
+
+- STDOUT (Standard Output): 
+  - It is a standard stream that is used to display output from a program. 
+  - In shell/bash, STDOUT is typically associated with the terminal or console where the program is running. 
+  - When you run a program, the output it generates is displayed on the terminal through STDOUT. 
+  - In C programming, STDOUT is <ins>***represented by the file descriptor 1,***</ins> and it can be used to write output to the terminal or to a file.
+
+- STDERR (Standard Error): 
+  - It is a standard stream that is used to display error messages or diagnostic information from a program. 
+  - In shell/bash, STDERR is also associated with the terminal or console, and it is used to print error messages or any other information that is not part of the normal program output. 
+  - In C programming, STDERR is <ins>***represented by the file descriptor 2***</ins>, and it can be used to write error messages or diagnostic information to the terminal or to a file.
+
+By default, STDOUT and STDERR are both displayed on the terminal. 
+
+However, you can redirect them to different locations using shell/bash redirection operators. For example, you can redirect the output to a file using the ">" operator, or you can redirect the error messages to a separate file using the "2>" operator.
+
+In C programming, you can also redirect the output and error streams by using the `dup2` system call to associate file descriptors with specific files or devices.
+
+
 ![image](https://github.com/izzypt/Pipex/assets/73948790/e9486474-3b6b-48fc-af33-60948c08c72a)
 ![image](https://github.com/izzypt/Pipex/assets/73948790/920e358f-64a0-42f1-a47d-01cf0115100a)
 ![image](https://github.com/izzypt/Pipex/assets/73948790/d1b100e3-28a3-429a-9a4a-61de949fd8fe)
