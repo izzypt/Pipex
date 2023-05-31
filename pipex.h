@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 19:34:12 by simao             #+#    #+#             */
-/*   Updated: 2023/05/30 13:48:54 by simao            ###   ########.fr       */
+/*   Updated: 2023/05/31 15:23:23 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,14 @@
 # include <unistd.h>
 # include <string.h>
 # include <sys/wait.h>
+# include <fcntl.h>
 
 typedef struct s_list
 {
 	char			*cmd;
 	int				fd[2];
 	char			*path;
-	char			**av;
+	char			**full_cmd;
 	struct s_list	*next;
 	struct s_list	*prev;
 }				t_list;
@@ -33,14 +34,20 @@ typedef struct s_list
 typedef struct s_data
 {
 	int		pid;
-	int		fd_in;
-	int		fd_out;
+	int		fd_input;
+	int		fd_output;
 	t_list	*head;
+	char	**paths;
 }	t_data;
 
+/* STRUCT UTILS */
+t_list	*cmds_lst(void);
+t_data	*data(void);
+/* COMMAND FUNCTIONS */
+void	run_command(void);
 /* PATH FUNCTIONS */
 char	**get_path_list(char **env);
-char	*access_path(char *cmd, char **paths);
+int		path_acessible(char *cmd, char **paths);
 /* MEMORY MANAGEMENT */
 void	free_paths(char **paths);
 /* UTIL FUNCTIONS */
