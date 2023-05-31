@@ -12,6 +12,32 @@ https://reactive.so/42-a-comprehensive-guide-to-pipex
 
 ![image](https://github.com/izzypt/Pipex/assets/73948790/cb6cf7c8-4368-4fc1-a6b1-e9a7867ab4b2)
 ![image](https://github.com/izzypt/Pipex/assets/73948790/1f9fad82-c68f-4c98-a646-7fa7c23a5d14)
+
+These are three standard streams that are used for input and output operations in a program.
+
+- STDIN (Standard Input): 
+  - It is a standard stream that provides input to a program. In shell/bash, STDIN is typically associated with the keyboard input. 
+  - When you run a program in the shell, you can provide input to it through STDIN by typing on the keyboard. 
+  - In C programming, STDIN is <ins>***represented by the file descriptor 0***</ins>, and it can be used to read input from the user or from a file.
+
+- STDOUT (Standard Output): 
+  - It is a standard stream that is used to display output from a program. 
+  - In shell/bash, STDOUT is typically associated with the terminal or console where the program is running. 
+  - When you run a program, the output it generates is displayed on the terminal through STDOUT. 
+  - In C programming, STDOUT is <ins>***represented by the file descriptor 1,***</ins> and it can be used to write output to the terminal or to a file.
+
+- STDERR (Standard Error): 
+  - It is a standard stream that is used to display error messages or diagnostic information from a program. 
+  - In shell/bash, STDERR is also associated with the terminal or console, and it is used to print error messages or any other information that is not part of the normal program output. 
+  - In C programming, STDERR is <ins>***represented by the file descriptor 2***</ins>, and it can be used to write error messages or diagnostic information to the terminal or to a file.
+
+By default, STDOUT and STDERR are both displayed on the terminal. 
+
+However, you can redirect them to different locations using shell/bash redirection operators. For example, you can redirect the output to a file using the ">" operator, or you can redirect the error messages to a separate file using the "2>" operator.
+
+In C programming, you can also redirect the output and error streams by using the `dup2` system call to associate file descriptors with specific files or devices.
+
+
 ![image](https://github.com/izzypt/Pipex/assets/73948790/e9486474-3b6b-48fc-af33-60948c08c72a)
 ![image](https://github.com/izzypt/Pipex/assets/73948790/920e358f-64a0-42f1-a47d-01cf0115100a)
 ![image](https://github.com/izzypt/Pipex/assets/73948790/d1b100e3-28a3-429a-9a4a-61de949fd8fe)
@@ -30,14 +56,35 @@ The `access()` function accepts two arguments: the file path as a string and the
 - `F_OK`: Checks if the file or directory exists.
 
 ![image](https://github.com/izzypt/Pipex/assets/73948790/066cf522-0732-41e5-8049-f9ef786a20df)
+
+The `fork()` function in C is used to create a new process by duplicating the existing process. 
+
+When `fork()` is called, it creates a new process that is an exact copy of the calling process, including the code, data, and stack.
+
+
+1. The `fork()` function is called by a parent process, and it returns a value: 
+  - If the value is 0, it means that the current process is the newly created child process. 
+  - If the value is positive, it represents the process ID (PID) of the child process, and the current process is the parent process.
+  - If the value is negative, it means that an error occurred during the creation of the new process. 
+
+2. After the `fork()` call, two separate processes are running in parallel: 
+  - The parent process and the child process. 
+  - The child process is an exact copy of the parent process, and both processes continue execution from the point immediately after the `fork()` call.
+
+3. The child process receives a copy of the parent process's memory, including variables, file descriptors, and other resources. However, the child process has its own unique process ID (PID).
+
+4. Since the child process is a copy of the parent process, any changes made in one process do not affect the other process. Each process has its own execution flow and can perform different tasks.
+
+5. The `fork()` function allows for the creation of complex processes and process hierarchies. For example, a parent process can create multiple child processes using multiple `fork()` calls, resulting in a tree-like structure.
+
+6. It's important to note that the order of execution between the parent and child processes is not predetermined. The operating system scheduler determines the order in which processes are executed.
+
+
 ![image](https://github.com/izzypt/Pipex/assets/73948790/fe6cd378-d193-414d-8225-f02c7bba4aad)
 ![image](https://github.com/izzypt/Pipex/assets/73948790/a453ec07-732a-4243-b21e-0c2861a0c04a)
 
 
-
-Pipe() function :
-
-In C programming, the `pipe()` function is used to create a communication channel (a pipe) between two related processes. 
+The `pipe()` function is used to create a communication channel (a pipe) between two related processes. 
 
 It allows one process to send data to another process, typically in a parent-child relationship or between sibling processes.
 
@@ -93,35 +140,4 @@ Note that error handling for `pipe()` and other system calls is omitted in this 
 
 ================================================================
 
-execve() executes the program referred to by pathname.  This
-       causes the program that is currently being run by the calling
-       process to be replaced with a new program, with newly initialized
-       stack, heap, and (initialized and uninitialized) data segments.
-
-       pathname must be either a binary executable
-
 ================================================================
-
-The `fork()` function in C is used to create a new process by duplicating the existing process. 
-
-When `fork()` is called, it creates a new process that is an exact copy of the calling process, including the code, data, and stack.
-
-
-1. The `fork()` function is called by a parent process, and it returns a value: 
-  - If the value is 0, it means that the current process is the newly created child process. 
-  - If the value is positive, it represents the process ID (PID) of the child process, and the current process is the parent process.
-  - If the value is negative, it means that an error occurred during the creation of the new process. 
-
-2. After the `fork()` call, two separate processes are running in parallel: 
-  - The parent process and the child process. 
-  - The child process is an exact copy of the parent process, and both processes continue execution from the point immediately after the `fork()` call.
-
-3. The child process receives a copy of the parent process's memory, including variables, file descriptors, and other resources. However, the child process has its own unique process ID (PID).
-
-4. Since the child process is a copy of the parent process, any changes made in one process do not affect the other process. Each process has its own execution flow and can perform different tasks.
-
-5. The `fork()` function allows for the creation of complex processes and process hierarchies. For example, a parent process can create multiple child processes using multiple `fork()` calls, resulting in a tree-like structure.
-
-6. It's important to note that the order of execution between the parent and child processes is not predetermined. The operating system scheduler determines the order in which processes are executed.
-
-Overall, `fork()` is a powerful function in C that allows for process creation and parallel execution, enabling concurrent programming and multitasking.
