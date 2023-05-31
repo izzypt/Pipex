@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 16:18:53 by simao             #+#    #+#             */
-/*   Updated: 2023/05/29 19:33:37 by simao            ###   ########.fr       */
+/*   Updated: 2023/05/31 17:50:01 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,19 @@
 #include <unistd.h>
 #include <string.h>
 #include <sys/wait.h>
+#include <fcntl.h>
 
 int	main(int argc, char **argv)
 {
 	int	fd[2];
 	int	pid1;
 	int	pid2;
+	int	outfile;
 
 	if (pipe(fd) == -1)
 		printf("Error on pipe()");
 	pid1 = fork();
+	outfile = open("examplo.txt", O_WRONLY | O_CREAT, 0644);
 	if (pid1 == 0)
 	{
 		//Child process 1 (ping)
@@ -39,12 +42,14 @@ int	main(int argc, char **argv)
 	{
 		//child process 2 (grep)
 		dup2(fd[0], STDIN_FILENO);
+		dup2(outfile, STDOUT_FILENO);
 		close(fd[0]);
 		close(fd[1]);
 		execlp("grep", "grep", "rtt", NULL);
 	}
 	close(fd[0]);
 	close(fd[1]);
+	close(outfile);
 	waitpid(pid1, NULL, 0);
 	waitpid(pid2, NULL, 0);
 	return (0);
