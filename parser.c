@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 19:30:31 by simao             #+#    #+#             */
-/*   Updated: 2023/05/31 20:53:36 by simao            ###   ########.fr       */
+/*   Updated: 2023/05/31 22:40:48 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,11 @@ void	parse_commands(char **argv)
 		curr->cmd = splitted_cmd[0];
 		curr->full_cmd = splitted_cmd;
 		curr->path = valid_cmd_path(argv[i]);
-		curr->nxt = malloc(sizeof(t_list));
-		curr = curr->nxt;
+		if (argv[i + 1])
+		{
+			curr->nxt = malloc(sizeof(t_list));
+			curr = curr->nxt;
+		}
 		i++;
 	}
 }
