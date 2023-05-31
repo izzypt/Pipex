@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 19:04:07 by simao             #+#    #+#             */
-/*   Updated: 2023/05/31 20:54:31 by simao            ###   ########.fr       */
+/*   Updated: 2023/05/31 22:45:16 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,17 @@
 
 int	main(int argc, char **argv, char **env)
 {
+	t_list	*curr;
+
+	curr = cmd_list();
 	get_path_list(env);
 	parse_commands(argv);
-	run_command();
+	while (curr)
+	{
+		printf("curr command: %s\n", curr->cmd);
+		run_command(curr);
+		curr = curr->nxt;
+	}
 	free_paths(data()->paths);
 	return (0);
 }
