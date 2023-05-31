@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 19:54:20 by simao             #+#    #+#             */
-/*   Updated: 2023/05/30 13:48:59 by simao            ###   ########.fr       */
+/*   Updated: 2023/05/31 15:46:35 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ char	**get_path_list(char **env)
 	exit(0);
 }
 
-char	*access_path(char *cmd, char **paths)
+int	path_acessible(char *cmd, char **paths)
 {
 	int		i;
 	char	**splitted_cmd;
-	char	*path_command;
+	char	*command_path;
 	char	*temp;
 
 	i = -1;
@@ -50,15 +50,16 @@ char	*access_path(char *cmd, char **paths)
 	while (paths[++i])
 	{
 		temp = ft_strjoin(paths[i], "/");
-		path_command = ft_strjoin(temp, splitted_cmd[0]);
-		if (!access(path_command, X_OK))
+		command_path = ft_strjoin(temp, splitted_cmd[0]);
+		if (!access(command_path, X_OK))
 		{
 			free(temp);
-			return (path_command);
+			return (1);
 		}
-		free(path_command);
+		free(command_path);
 		free(temp);
 	}
+	perror("Command not found\n");
 	free(splitted_cmd);
-	return (NULL);
+	exit(0);
 }
