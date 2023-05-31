@@ -56,14 +56,35 @@ The `access()` function accepts two arguments: the file path as a string and the
 - `F_OK`: Checks if the file or directory exists.
 
 ![image](https://github.com/izzypt/Pipex/assets/73948790/066cf522-0732-41e5-8049-f9ef786a20df)
+
+The `fork()` function in C is used to create a new process by duplicating the existing process. 
+
+When `fork()` is called, it creates a new process that is an exact copy of the calling process, including the code, data, and stack.
+
+
+1. The `fork()` function is called by a parent process, and it returns a value: 
+  - If the value is 0, it means that the current process is the newly created child process. 
+  - If the value is positive, it represents the process ID (PID) of the child process, and the current process is the parent process.
+  - If the value is negative, it means that an error occurred during the creation of the new process. 
+
+2. After the `fork()` call, two separate processes are running in parallel: 
+  - The parent process and the child process. 
+  - The child process is an exact copy of the parent process, and both processes continue execution from the point immediately after the `fork()` call.
+
+3. The child process receives a copy of the parent process's memory, including variables, file descriptors, and other resources. However, the child process has its own unique process ID (PID).
+
+4. Since the child process is a copy of the parent process, any changes made in one process do not affect the other process. Each process has its own execution flow and can perform different tasks.
+
+5. The `fork()` function allows for the creation of complex processes and process hierarchies. For example, a parent process can create multiple child processes using multiple `fork()` calls, resulting in a tree-like structure.
+
+6. It's important to note that the order of execution between the parent and child processes is not predetermined. The operating system scheduler determines the order in which processes are executed.
+
+
 ![image](https://github.com/izzypt/Pipex/assets/73948790/fe6cd378-d193-414d-8225-f02c7bba4aad)
 ![image](https://github.com/izzypt/Pipex/assets/73948790/a453ec07-732a-4243-b21e-0c2861a0c04a)
 
 
-
-Pipe() function :
-
-In C programming, the `pipe()` function is used to create a communication channel (a pipe) between two related processes. 
+The `pipe()` function is used to create a communication channel (a pipe) between two related processes. 
 
 It allows one process to send data to another process, typically in a parent-child relationship or between sibling processes.
 
@@ -119,35 +140,4 @@ Note that error handling for `pipe()` and other system calls is omitted in this 
 
 ================================================================
 
-execve() executes the program referred to by pathname.  This
-       causes the program that is currently being run by the calling
-       process to be replaced with a new program, with newly initialized
-       stack, heap, and (initialized and uninitialized) data segments.
-
-       pathname must be either a binary executable
-
 ================================================================
-
-The `fork()` function in C is used to create a new process by duplicating the existing process. 
-
-When `fork()` is called, it creates a new process that is an exact copy of the calling process, including the code, data, and stack.
-
-
-1. The `fork()` function is called by a parent process, and it returns a value: 
-  - If the value is 0, it means that the current process is the newly created child process. 
-  - If the value is positive, it represents the process ID (PID) of the child process, and the current process is the parent process.
-  - If the value is negative, it means that an error occurred during the creation of the new process. 
-
-2. After the `fork()` call, two separate processes are running in parallel: 
-  - The parent process and the child process. 
-  - The child process is an exact copy of the parent process, and both processes continue execution from the point immediately after the `fork()` call.
-
-3. The child process receives a copy of the parent process's memory, including variables, file descriptors, and other resources. However, the child process has its own unique process ID (PID).
-
-4. Since the child process is a copy of the parent process, any changes made in one process do not affect the other process. Each process has its own execution flow and can perform different tasks.
-
-5. The `fork()` function allows for the creation of complex processes and process hierarchies. For example, a parent process can create multiple child processes using multiple `fork()` calls, resulting in a tree-like structure.
-
-6. It's important to note that the order of execution between the parent and child processes is not predetermined. The operating system scheduler determines the order in which processes are executed.
-
-Overall, `fork()` is a powerful function in C that allows for process creation and parallel execution, enabling concurrent programming and multitasking.
