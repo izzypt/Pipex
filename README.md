@@ -40,6 +40,29 @@ In C programming, you can also redirect the output and error streams by using th
 
 ![image](https://github.com/izzypt/Pipex/assets/73948790/e9486474-3b6b-48fc-af33-60948c08c72a)
 ![image](https://github.com/izzypt/Pipex/assets/73948790/920e358f-64a0-42f1-a47d-01cf0115100a)
+
+  The prototype of the `execve()` function is as follows:
+
+  ```c
+  int execve(const char *path, char *const argv[], char *const envp[]);
+  ```
+
+  Here's an explanation of the function parameters:
+
+  - `filename`: This parameter specifies the filename or path of the executable file to be executed. It can be an absolute path or a relative path to the current working directory. The file must have execute permission for the user invoking `execve()`.
+
+  - `argv[]`: This is an array of strings that represents the command-line arguments passed to the new program. The first element of the array (`argv[0]`) typically contains the name of the program itself. The array must be terminated by a NULL pointer.
+
+  - `envp[]`: This parameter is an array of strings that represents the environment variables to be set in the new program. Each string in the array should be in the format "variable=value". Like `argv[]`, the array must be terminated by a NULL pointer.
+
+  The `execve()` function loads the new program into the current process, replacing the existing code, data, and stack segments with the new ones. It starts the execution of the new program from the `main()` function, passing the command-line arguments and environment variables specified.
+
+  - If `execve()` succeeds, it does not return to the calling program. 
+
+  - However, if an error occurs during the execution, it returns -1, and you can check the `errno` variable to determine the specific error that occurred.
+
+It's important to use `execve()` and related functions with caution since they replace the current program image and can have significant consequences if not used correctly.
+
 ![image](https://github.com/izzypt/Pipex/assets/73948790/d1b100e3-28a3-429a-9a4a-61de949fd8fe)
 
 The possible return values of the `access()` function are defined as preprocessor macros in the `<unistd.h>` header file. Here are the commonly used return values:
