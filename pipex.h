@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 19:34:12 by simao             #+#    #+#             */
-/*   Updated: 2023/06/10 17:15:46 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/11 20:25:41 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ t_list	*cmd_list(void);
 t_data	*data(void);
 /* COMMAND FUNCTIONS */
 void	get_files_fd(int ac, char **av);
-void	run_cmd(t_list *cmd, char *file, int in_out);
+void	cmd_output_to_file(t_list *cmd, char *file, int in_or_out);
+void	cmd_input_from_file(t_list *cmd, char *file, int in_or_out);
 void	parse_commands(char **argv);
 /* PATH FUNCTIONS */
 char	**get_path_list(char **env);

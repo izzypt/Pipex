@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 19:04:07 by simao             #+#    #+#             */
-/*   Updated: 2023/06/11 18:37:10 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/11 20:29:00 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@ int	main(int argc, char **argv, char **env)
 	parse_commands(argv);
 	while (curr != NULL)
 	{
-		printf("curr command: %s\n", curr->cmd);
-		run_cmd(curr, argv[2], 0);
+		if (!ft_strncmp(argv[2], ">", 1))
+			cmd_output_to_file(curr, argv[3], 1);
+		if (!ft_strncmp(argv[2], "<", 1))
+			cmd_input_from_file(curr, argv[1], 1);
 		curr = curr->nxt;
 	}
-	
 	free_paths(data()->paths);
 	return (0);
 }
