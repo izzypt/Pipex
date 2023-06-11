@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 19:54:20 by simao             #+#    #+#             */
-/*   Updated: 2023/06/11 18:06:24 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/06/11 20:37:26 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ char	*valid_cmd_path(char *cmd)
 		if (!access(command_path, X_OK))
 		{
 			free(temp);
-			printf("Valid path is: %s\n", command_path);
 			return (command_path);
 		}
 		free(command_path);
