@@ -6,12 +6,16 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 19:54:20 by simao             #+#    #+#             */
-/*   Updated: 2023/05/31 21:49:04 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/11 15:36:01 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
+/*
+- Finds the PATH environment variable and splits all the paths.
+- Saves those paths in the data struct.
+*/
 char	**get_path_list(char **env)
 {
 	int		i;
@@ -32,6 +36,11 @@ char	**get_path_list(char **env)
 	exit(0);
 }
 
+/*
+- Creates the path of a command by appending the "/" and the command name.
+- Checks if we have permissions to execte the command accessing the command path.
+- It returns the valid command path.
+*/
 char	*valid_cmd_path(char *cmd)
 {
 	char	*command_path;

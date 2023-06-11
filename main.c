@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 19:04:07 by simao             #+#    #+#             */
-/*   Updated: 2023/05/31 22:45:16 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/11 16:34:30 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv, char **env)
 	while (curr)
 	{
 		printf("curr command: %s\n", curr->cmd);
-		run_command(curr);
+		run_cmd(curr);
 		curr = curr->nxt;
 	}
 	free_paths(data()->paths);
@@ -35,7 +35,7 @@ int	main(int argc, char **argv, char **env)
 1 - Get all the paths from **env (PATH variable) and save it to data()->paths.
 2 - After that we will check if the path and the given command exist and if we have permission.
 
-*/
+
 
 //printf("Valor de acesso: %d\n", access("/usr/bin/ls", X_OK));
 
