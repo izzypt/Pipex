@@ -3,37 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 19:54:20 by simao             #+#    #+#             */
-/*   Updated: 2023/06/11 15:36:01 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/11 18:06:24 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
 /*
-- Finds the PATH environment variable and splits all the paths.
+- Finds the PATH environment variable and splits all the paths by ":".
 - Saves those paths in the data struct.
 */
 char	**get_path_list(char **env)
 {
-	int		i;
 	char	**paths;
+	int		i;
 
-	i = -1;
-	paths = NULL;
-	while (env[++i])
-	{
-		if (ft_strncmp(env[i], "PATH=", 5) == 0)
-		{
-			paths = ft_split(env[i] + 5, ':');
-			data()->paths = paths;
-			return (paths);
-		}
-	}
-	perror("PATH not found");
-	exit(0);
+	i = 0;
+	paths = ft_split(getenv("PATH"), ':');
+	data()->paths = paths;
+	return (paths);
 }
 
 /*
@@ -47,24 +38,24 @@ char	*valid_cmd_path(char *cmd)
 	char	*temp;
 	char	**splitted_cmd;
 	char	**paths;
+	int		i;
 
-	paths = data()->paths;
-	splitted_cmd = ft_split(cmd, ' ');
-	while (paths++)
+	i = 0;
+	while (data()->paths[i] != NULL)
 	{
-		temp = ft_strjoin(*paths, "/");
-		command_path = ft_strjoin(temp, splitted_cmd[0]);
+		temp = ft_strjoin(data()->paths[i], "/");
+		command_path = ft_strjoin(temp, cmd);
 		if (!access(command_path, X_OK))
 		{
 			free(temp);
+			printf("Valid path is: %s\n", command_path);
 			return (command_path);
 		}
 		free(command_path);
 		free(temp);
+		i++;
 	}
-	perror("Command not found\n");
-	free(splitted_cmd);
-	exit(0);
+	return (NULL);
 }
 
 void	get_files_fd(int ac, char **argv)

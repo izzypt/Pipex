@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   testes.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 22:15:09 by simao             #+#    #+#             */
-/*   Updated: 2023/06/01 23:17:26 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/11 17:06:22 by smagalha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,3 +56,14 @@ int main(int argc, char **argv, char **env)
 }
 
 */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main () {
+   printf("PATH : %s\n", getenv("PATH"));
+   printf("HOME : %s\n", getenv("HOME"));
+   printf("ROOT : %s\n", getenv("ROOT"));
+
+   return(0);
+}
