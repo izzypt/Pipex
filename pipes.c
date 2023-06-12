@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:38:10 by simao             #+#    #+#             */
-/*   Updated: 2023/06/12 01:37:56 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/12 01:59:51 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void	cmd_pipe(t_list *cmd1, t_list *cmd2)
 	int	pid1;
 	int	pid2;
 
-	if (pipe(pipe_fd) == -1)
-		printf("Error on pipe()");
 	pid1 = fork();
 	if (pid1 == 0)
 	{
@@ -49,8 +47,6 @@ void	cmd_output_to_file(t_list *cmd, char *file)
 	int	outfile;
 
 	outfile = open(file, O_WRONLY | O_CREAT, 0644);
-	if (pipe(pipe_fd) == -1)
-		printf("Error on pipe()");
 	pid1 = fork();
 	if (pid1 == 0)
 	{
@@ -72,8 +68,6 @@ void	cmd_input_from_file(t_list *cmd, char *file)
 	int	infile;
 
 	infile = open(file, O_RDONLY, 0644);
-	if (pipe(pipe_fd) == -1)
-		printf("Error on pipe()");
 	pid1 = fork();
 	if (pid1 == 0)
 	{
