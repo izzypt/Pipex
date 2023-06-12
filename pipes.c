@@ -6,12 +6,16 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:38:10 by simao             #+#    #+#             */
-/*   Updated: 2023/06/12 01:59:51 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/12 11:55:53 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
+/*
+- Will output cmd1 to the write end of the pipe.
+- Input of cmd2 will come from the read end of the pipe.
+*/
 void	cmd_pipe(t_list *cmd1, t_list *cmd2)
 {
 	int	pipe_fd[2];
@@ -40,6 +44,9 @@ void	cmd_pipe(t_list *cmd1, t_list *cmd2)
 	waitpid(pid2, NULL, 0);
 }
 
+/*
+- Will output the cmd to the file contents.
+*/
 void	cmd_output_to_file(t_list *cmd, char *file)
 {
 	int	pipe_fd[2];
@@ -61,6 +68,9 @@ void	cmd_output_to_file(t_list *cmd, char *file)
 	waitpid(pid1, NULL, 0);
 }
 
+/*
+- Input for the cmd will be received from the file contents.
+*/
 void	cmd_input_from_file(t_list *cmd, char *file)
 {
 	int	pipe_fd[2];

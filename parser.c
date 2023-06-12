@@ -6,12 +6,15 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 19:30:31 by simao             #+#    #+#             */
-/*   Updated: 2023/06/12 01:36:02 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/12 11:57:43 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
+/*
+- Checks from the given index if the are any valid commands left on argv.
+*/
 int	commands_left(int index, int argc, char **argv)
 {
 	char	**splitted_cmd;
@@ -30,6 +33,10 @@ int	commands_left(int index, int argc, char **argv)
 	return (0);
 }
 
+/*
+- Checks if a command is valid
+- If a command is valid, saves it on linked list node.
+*/
 void	parse_commands(int argc, char **argv)
 {
 	int		i;

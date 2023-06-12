@@ -6,7 +6,7 @@
 /*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 19:54:20 by simao             #+#    #+#             */
-/*   Updated: 2023/06/11 20:37:26 by simao            ###   ########.fr       */
+/*   Updated: 2023/06/12 11:58:44 by simao            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,25 +55,4 @@ char	*valid_cmd_path(char *cmd)
 		i++;
 	}
 	return (NULL);
-}
-
-void	get_files_fd(int ac, char **argv)
-{
-	int		fd[2];
-
-	/*(data())->fd_input = open(argv[1], O_RDONLY);
-	if (data()->fd_input == -1)
-	{
-		perror(argv[1]);
-		pipe(fd);
-		(data())->fd_input = fd[0];
-		close(fd[1]);
-	}
-	(data())->fd_output = open(argv[ac - 1], O_WRONLY | \
-	O_TRUNC | O_CREAT, 0644);
-	if (data()->fd_output == -1)
-	{
-		perror("");
-		exit(0);
-	}*/
 }
