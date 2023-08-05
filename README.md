@@ -7,6 +7,7 @@ Pipex focuses on three main concepts: pipelines, child processes and execution o
 
 https://reactive.so/42-a-comprehensive-guide-to-pipex
 
+https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/Pipes.html
 
 ## WhiteListed Functions:
 
